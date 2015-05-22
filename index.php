@@ -7,5 +7,4 @@ require_once(APPLICATION_PATH . "/application/conf/conf.php");
 
 $app  = new Yaf_Application($config);
 $app->bootstrap()
-	->run();
-?>
+    ->run();

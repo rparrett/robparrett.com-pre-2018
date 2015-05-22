@@ -1,68 +1,75 @@
 <?php
 
-class BunnyModel {
-	private $feedError = "";
-	private $config;
+class BunnyModel
+{
+    private $feedError = "";
+    private $config;
 
-	function __construct($config) {
-		$this->config = $config;
-	}
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
 
-	function feed($test = false) {
-		$this->setFeedError(false);
+    public function feed($test = false)
+    {
+        $this->setFeedError(false);
 
-		$accessToken = $this->config['particle']['accessToken'];
-		$deviceId = $this->config['particle']['deviceId'];
+        $accessToken = $this->config['particle']['accessToken'];
+        $deviceId = $this->config['particle']['deviceId'];
 
-		$particle = new ParticleAPI($accessToken);
-		$result = $particle->call($deviceId, $test ? 'test' : 'go');
+        $particle = new ParticleAPI($accessToken);
+        $result = $particle->call($deviceId, $test ? 'test' : 'go');
 
-		$error = "";
+        $error = "";
 
-		if (!$result) {
-			$error = "No response from Spark API.";
-		} elseif (isset($result->error)) {
-			$error = "Spark API: $result->error";
-		} elseif (!isset($result->return_value)) {
-			$error = "Spark API: Response did not contain return value.";
-		} elseif (!$result->return_value) {
-			$error = "Spark API: Endpoint did not return success.";
-		}
-		
-		$this->setLastFed();
+        if (!$result) {
+            $error = "No response from Spark API.";
+        } elseif (isset($result->error)) {
+            $error = "Spark API: $result->error";
+        } elseif (!isset($result->return_value)) {
+            $error = "Spark API: Response did not contain return value.";
+        } elseif (!$result->return_value) {
+            $error = "Spark API: Endpoint did not return success.";
+        }
+        
+        $this->setLastFed();
 
-		if ($error) {
-			$this->setFeedError($error);
-			return false;
-		}
+        if ($error) {
+            $this->setFeedError($error);
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	function setFeedError($error) {
-		$this->feedError = $error;
-	}
+    private function setFeedError($error)
+    {
+        $this->feedError = $error;
+    }
 
-	function getFeedError() {
-		if ($this->feedError) {
-			return $error;
-		}
+    public function getFeedError()
+    {
+        if ($this->feedError) {
+            return $error;
+        }
 
-		return "No error.";
-	}
+        return "No error.";
+    }
 
-	function getLastFed() {
-		$timestampFile = $this->config['bunny']['timestampFile'];
+    public function getLastFed()
+    {
+        $timestampFile = $this->config['bunny']['timestampFile'];
 
-		return filemtime($timestampFile);
-	}
+        return filemtime($timestampFile);
+    }
 
-	function setLastFed($time = null) {
-		if (is_null($time)) {
-			$time = time();
-		}
-		
-		$timestampFile = $this->config['bunny']['timestampFile'];
-		touch($timestampFile);
-	}
+    private function setLastFed($time = null)
+    {
+        if (is_null($time)) {
+            $time = time();
+        }
+        
+        $timestampFile = $this->config['bunny']['timestampFile'];
+        touch($timestampFile);
+    }
 }
