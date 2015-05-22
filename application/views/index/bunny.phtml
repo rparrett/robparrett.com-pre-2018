@@ -1,0 +1,22 @@
+<?php if (isset($error)) { ?>
+<div style="background: #ff8080; padding: 5px; margin-top: 10px;">
+	<h2>An error has occurred</h2>
+	<p>
+		<?=$error?>
+	</p>
+	<p>
+		Bunny may not have been fed.
+	</p>
+</div>
+<?php } ?>
+<p>
+	Button last pressed <?=$ago?> ago.
+</p>
+<p>
+	Do you want to feed bunny?
+
+    <form method="POST">
+		<label>Test Run</label><input type="checkbox" name="test" value="Test Run"><br/>
+		<label>&nbsp;</label><input type="submit" name="feed" value="Feed Bunny">
+    </form>
+</p>

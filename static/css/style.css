@@ -1,0 +1,86 @@
+html {
+	overflow-y: scroll;
+}	
+body,
+html {
+	margin:0;
+	padding:0;
+	color:#000;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+#wrap {
+	width:910px;
+	margin:0 auto;
+}
+#header {
+	color: white;
+	background-color: black;
+	padding:5px 10px;   
+	border-bottom: 1px solid black;
+	font-size: 200%;
+}
+h1,h2 {
+	margin: 10px 0px 0px 0px;
+}
+#main {
+	float:left;
+	width:630px;
+	padding: 0px 10px 10px 10px;
+	height: 100%;
+	min-height: 600px;
+}
+#main img { max-width: 640px; }
+#side {
+	float:right;
+	width:229px;
+	padding: 0px 10px 10px 10px;
+	text-align: right;
+}
+
+/* tipit */
+
+#rangeSlider, #maxSlider {
+	width: 217px; 
+	display: inline-block; 
+}
+.noUi-horizontal {
+	padding-right: 32px;
+}
+.noUi-horizontal .noUi-handle {
+	left: -1px;
+}
+.noUi-horizontal .noUi-origin  {
+	right: -32px;
+}
+.tipControls>div {
+	padding: 5px 0px 5px 0px;
+}
+label {
+	width: 120px; 
+	display: inline-block;
+	text-align: right;
+	padding-right: 5px;
+}
+#results span.pi {
+	background-color: #bc411a;
+	color: white;
+}
+#results span.palindrome {
+	background-color: #60a917;
+	color: white;
+}
+#results span.counting {
+	background-color: #71127b;
+	color: white;
+}
+#results span {
+	border-radius: 0.25em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	display: inline-block;
+	background-color: #eee;
+}
+#results > div {
+	margin: 0px 0px 5px 0px;
+}

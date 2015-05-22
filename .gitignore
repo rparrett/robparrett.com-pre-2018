@@ -1,0 +1,7 @@
+*.swf
+*.swo
+*~
+
+application/conf/conf.php
+static/img
+static/vid

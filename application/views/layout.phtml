@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<title>robparrett.com<?php if (isset($this->layout['subtitle'])) { ?>: <?=$this->layout['subtitle']?><?php } ?></title>
+	<link href="http://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css"/>
+	<link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+<?php if (isset($this->layout['include_css'])) foreach ($this->layout['include_css'] as $css) { ?>
+	<link href="<?= $css ?>" rel="stylesheet" type="text/css"/>
+<?php } ?>
+<?php if (isset($this->layout['include_scripts'])) foreach ($this->layout['include_scripts'] as $script) { ?>
+	<script src="<?=$script?>"></script>
+<?php } ?>
+	<meta name="google-site-verification" content="wzm0tiMhw91UoH_yYgrgmvnTXVwnfTZnfBQcs7dmMG0" />
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">robparrett.&shy;com</div>
+        <div id="main">
+            <?= $this->content ?>
+        </div>
+		<div id="side">
+			<h2>Pages</h2>
+			<p>
+				<a href="/">rob parrett</a><br/>
+				<a href="/fanbot">fanbot</a><br/>
+				<a href="/sbc">small beverage collider</a><br/>
+				<a href="/lbc">large beverage collider</a><br/>
+				<a href="/pongclock">pongclock</a><br/>
+				<a href="/biometrics">biometrics</a><br/>
+			</p>
+			<h2>Tools</h2>
+			<p>
+				<a href="/tipit">web-tipit</a><br/>
+				<a href="/rng">random name generator</a><br/>
+			</p>
+			<h2>Links</h2>
+			<p>
+				<a href="http://github.com/rparrett">my github</a><br/>
+				<a href="http://www.thingiverse.com/ellipticaloptician/about">my thingiverse</a><br/>
+			</p>
+<?php if (isset($this->layout['isAuthenticated']) && $this->layout['isAuthenticated']) { ?>
+			<h2>Private</h2>
+			<p>
+				<a href="/bunny">Bunny</a><br/>
+				<a href="/logout">Logout</a>
+			</p>
+<?php } ?>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-900234-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+</html>
+<!-- <?= sprintf("%.2fms", (microtime(true) - START_TIME) * 1000); ?> -->

@@ -1,0 +1,74 @@
+<h2>Pongclock</h2>
+<p>Pongclock was borne out of my frustrations with, and the <a href="http://forum.chumby.com/viewtopic.php?id=8457">death of Chumby</a>. It's an Arduino-compatible clock with a 1.8" 160x128 tft display and a Maxim DS1307 to keep time.</p>
+<h3>Schematic, PCB, Code, Faceplate STL</h3>
+<p>Available at <a href="http://github.com/rparrett/pongclock">Github</a>
+<h3>Pictures</h3>
+<p>
+    <img src="/static/img/pongclock1.jpg"><br/>
+    <img src="/static/img/pongclock2.jpg">
+</p>
+<h3>Programming the ATmega328</h3>
+<p>
+    I made a little breadboard-compatible programming jig with <a href="https://www.sparkfun.com/products/9173">pogo pins</a> and some little <a href="https://www.sparkfun.com/products/8886">5x5 protoboards</a>. This allowed me to use a spare arduino nano and ArduinoISP to get the arduino bootloader onto pongclock without soldering on a header.
+</p>
+<p>
+    <img src="/static/img/pongclock3.jpg"></img>
+</p>
+<h3>Faceplate</h3>
+<p>
+    I had planned on designing a full case, but ended up printing only the faceplate as a test. The fit was perfect, and I liked the look of the exposed PCB, so I slapped some 8mm M3 bolts on it and called it done.
+</p>
+<p>
+    The faceplate was printed by a <a href="http://www.re3d.org/">Gigabot</a> via the "airbnb of 3d printing," <a href="http://www.makexyz.com/">makexyz</a>. The service allows you to find idle 3d printers in your area. I've had some mixed results, but the folks at Gigabot delivered a beautiful print very rapidly.
+</p>
+<p>
+    Rubber feet and/or a deeper base/stand might be good additions, as it really likes to slide and fall backwards on my desk.
+</p>
+<h3>PCB Fabrication</h3>
+<p>
+    The PCBs were batched up and sent off to a top secret fabrication facility by <a href="http://oshpark.com/">OSH Park</a>. For small quantities of small boards fast, their prices can't be beat, and the results are gorgeous. If you look closely, you can also see that my third order was made at a different fab. There's been a slight error in the solder mask color, but the silk screen quality is vastly improved.
+</p>
+<p>
+    <img src="/static/img/pongclock6.jpg"></a>
+</p>
+<h3>Previous Iterations</h3>
+<p>
+    I knew almost nothing about electronics and PCB design going into this project. I learned a great deal along the way with the help of some very kind members of the electronics community at <a href="http://reddit.com/r/electronics">/r/electronics</a> and <a href="http://reddit.com/r/ece">/r/ece</a>.
+</p>
+<p>
+    The most important things I learned were the value of actually reading datasheets, and triple-checking my work.
+</p>
+<h3>Pongclock 1.0</h3>
+<p>
+    It took about 8 iterations to get to this point. I was still learning how to use Diptrace, figuring out the final form factor, how I was going to power the thing, and finally flirting with a few surface mount components.
+</p>
+<p>
+    <img src="/static/img/pongclock7.jpg"><br/>
+    <img src="/static/img/pongclock8.jpg">
+</p>
+<p>
+    In this version, I simply attached a <a href="http://www.sainsmart.com/home-page-view/sainsmart-1-8-spi-lcd-module-with-microsd-led-backlight-for-arduino-mega-atmel-atmega.html">breakout board from sainsmart</a> for the LCD with some wire. 
+</p>
+<p>
+    Can you spot the big mistake? Look a little closer at the battery. You can see that I've wrapped the vertical sections of the battery holder with some heat-shrink and flipped the battery upside down. Oops! Also visible is a pretty horrendous soldering job. What you probably can't see is that I've also reversed the rx/tx lines on the FTDI header.
+</p>
+<h3>Pongclock 2.0</h3>
+<p>
+    <img src="/static/img/pongclock5.png">
+</p>
+<p>
+    Things are getting a little more exciting here. The electronics from the original breakout board (minus the sd card slot) have joined the party. The clock crystal now has a nice little ground moat, and a pad for the case. Another switch, along with a transistor and a couple resistors can now dim the backlight. And we're now almost completely surface-mount. I credit <a href="http://eevblog.com">Dave Jones' videos</a> with giving the the confidence I needed to solder a TQFP.
+</p>
+<p>
+    This is actually a screenshot taken after a round of changes suggested by a reddit user. You can see that the routing is still really bad. There are natural places where certain components should be that I just couldn't see. The ground plane on the reverse side is all broken up. Yuck.
+</p>
+<p>
+    There's also a few major problems with this version that I wouldn't discover until after I had completely assembled it. How exactly do I get the arduino bootloader onto the thing? I soldered some small wires onto the leads of the ICs. How do I mount the LCD with the leads of the 16mhz crystal poking through to that side of the board? I got out the dremel tool.
+</p>
+<h3>Pongclock 2.1</h3>
+<p>
+    <img src="/static/img/pongclock9.png">
+</p>
+<p>
+    I've fixed the glaring issues with the previous board, swapped in a smaller battery holder, and added a fourth (unused for now) button. With two buttons on each side of the board, an actual game of pong can now be played. I've even moved the silkscreen labels for the FTDI header so that you can read them even after the header is installed. 
+</p>
