@@ -1,6 +1,6 @@
 # robparrett.com
 
-The source code for my personal website. Including the super-secret BunnyBot (IoC bunny feeder) control panel.
+The source code for my personal website. Including the super-secret BunnyBot (IoT bunny feeder) control panel.
 
 # stack
 
