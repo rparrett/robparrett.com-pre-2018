@@ -132,7 +132,7 @@ class AuthenticationModel
         
         $token .= $user_id;
 
-        setcookie('session_token', $token, 0, '/');
+        setcookie('session_token', $token, time() + 24 * 60 * 60 * 365, '/');
 
         return $result;
     }
