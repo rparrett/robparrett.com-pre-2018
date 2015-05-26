@@ -33,7 +33,9 @@ class UsersModel
     }
 
     public function getByName($name)
-    {
+	{
+		$name = strtolower($name);
+
         $sql = "SELECT * FROM users WHERE name = :name";
 
         $stmt = $this->db->prepare($sql);
@@ -63,7 +65,7 @@ class UsersModel
         $stmt->bindValue('id', $user->id, SQLITE3_INTEGER);
         $stmt->bindValue('password', $user->password, SQLITE3_TEXT);
         $stmt->bindValue('super', $user->super ? 1 : 0, SQLITE3_INTEGER);
-        $stmt->bindValue('name', $user->name, SQLITE3_TEXT);
+        $stmt->bindValue('name', strtolower($user->name), SQLITE3_TEXT);
 
         $result = $stmt->execute();
 
@@ -71,13 +73,13 @@ class UsersModel
     }
 
     public function add($name, $password, $super)
-    {
+	{
         $sql = "INSERT INTO users (name, password, super) VALUES (:name, :password, :super)";
 
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue('name', $name, SQLITE3_TEXT);
+        $stmt->bindValue('name', strtolower($name), SQLITE3_TEXT);
         $stmt->bindValue('password', $password, SQLITE3_TEXT);
         $stmt->bindValue('super', $super ? 1 : 0, SQLITE3_INTEGER);
 
