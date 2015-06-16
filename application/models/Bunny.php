@@ -50,7 +50,7 @@ class BunnyModel
     public function getFeedError()
     {
         if ($this->feedError) {
-            return $error;
+            return $this->feedError;
         }
 
         return "No error.";
