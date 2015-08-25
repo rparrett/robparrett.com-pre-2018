@@ -48,7 +48,7 @@ class IndexController extends Yaf_Controller_Abstract
         );
 
         $withings = Yaf_Registry::get('dic')->get('withingsModel');
-        $weights = $withings->getWeightsLocal(7862);
+        $weights = $withings->getWeightsLocal(Yaf_Application::app()->getConfig()->application->withings->userId);
 
         $this->_view->data = $withings->formatWeightsForHighCharts($weights);
     }
